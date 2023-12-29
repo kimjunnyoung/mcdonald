@@ -279,6 +279,11 @@ npm start
   - 문제: 관리자 메인 페이지 화면 레이아웃이 예상과 다르게 깨지는 문제가 발생.
   - 해결책: CSS Grid 등을 사용하여 레이아웃을 안정적으로 유지하도록 스타일을 조정.
 
+<table>
+  <tr><img src="/readme-file/admin-grid.png  width="200" height="400" /></tr>
+</table>
+
+
 
 ## 6. END
 
