@@ -357,13 +357,19 @@ function Maps({ stores, onMarkerClick, clickedStore, myLocation }) {
 - 프로젝트 문서화(back-end, ERD, 트러블 슈팅)
 - AWS EC2 활용하여 프로젝트 배포
 - NginX 리버스 프록시, https 적용
+- Node.js 서버 구조 설계(Routers-Controllers-Services 구조)
+- React 폴더 구조 설계
+- JWT accessToken, refreshToken과 Redis를 사용한 사용자 인증 구현
+- Recoil 상태관리 라이브러리를 사용해 사용자 로그인 상태 관리
 
 ### 김준녕
 
 - 품질이야기(프론트,디자인,백엔드)
 - 사람들(프론트,디자인,백엔드)
-- 관리자페이지(재료,크루,노력,FAQ) 프론트,디자인
-- 프로젝트 문서화()
+- 관리자 페이지(재료,크루,노력,FAQ) 프론트,디자인
+- 관리자 페이지(차트 및 판매량 계산)
+- 관리자 페이지 기본 틀 구현
+- 프로젝트 문서화(front-end, Architecture, 트러블 슈팅)
 - 관리자 페이지 사용 설명서
 - 카카오맵 API 및 MyLocation 기능
 
@@ -389,7 +395,7 @@ function Maps({ stores, onMarkerClick, clickedStore, myLocation }) {
 - 관리자페이지(옵션, Slider, Banner) 프론트, 디자인
 - Aside 기능 구현
 - 관리자 페이지 사용 설명서
-- 프로젝트 문서화(서비스 설명)
+- 프로젝트 문서화(서비스 설명, 소개)
 
 ### 박승균
 
