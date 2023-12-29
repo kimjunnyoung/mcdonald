@@ -72,11 +72,19 @@ npm install
 npm start
 ```
 
+Back-end API test
+
+
+- [API test용 POSTMAN](https://app.getpostman.com/join-team?invite_code=4071354b0146362eeb5dac679a7525f1&target_code=928eadf671f500a4f66463f91555daf1)
+
+
 ## 💻 2. Project Info : 프로젝트 소개
 
 ### ✔️개발 기간
 
 - 2023.12.04 ~ 2023.12.27 (4주)
+
+- [개발 일정 구글 시트](https://docs.google.com/spreadsheets/d/10lYxth4svSIDfBxel2TmEZxhLZDoqIq5BC2L7L-PQ_w/edit#gid=609442951)
 
 ### ✔️ 배포 서버
 
@@ -233,6 +241,8 @@ npm start
 
 ![ERD](/readme-file/ERD.svg)
 
+- [ERD 다이어그램](https://dbdiagram.io/d/mcdonald-ERD-657133f656d8064ca08ba43c)
+
 <br/>
 
 #### 🧩 Architecture
@@ -368,9 +378,9 @@ function Maps({ stores, onMarkerClick, clickedStore, myLocation }) {
 - 사람들(프론트,디자인,백엔드)
 - 관리자 페이지(재료,크루,노력,FAQ) 프론트,디자인
 - 관리자 페이지(차트 및 판매량 계산)
-- 관리자 페이지 기본 틀 구현
+- MUI 활용한 관리자 메인페이지 기본 틀 구현
 - 프로젝트 문서화(front-end, Architecture, 트러블 슈팅)
-- 관리자 페이지 사용 설명서
+- 관리자 페이지 사용 설명서 작성
 - 카카오맵 API 및 MyLocation 기능
 
 ### 유재혁
