@@ -265,27 +265,69 @@ npm start
  
   - 문제: 개발 완료 후 Build 파일로 교체했을 때 백엔드 API와 React의 route 주소가 겹쳐 화면이 안나오고 백엔드에 get 요청이 되는 이슈
   - 해결책: 문제를 해결하기 위해 백엔드 API 주소를 변경. 기존 루트 주소로 요청을 보내고 있었으나, 변경 후에는 API 요청 시에 /api를 앞에 추가하여 요청하도록 수정. 이를 통해 프론트엔드와 백엔드 간의 라우트 충돌을 방지하고, 각각이 올바르게 동작하도록 조치.
-    ```javascript
-    axios.get(`${API_URL}/api/store`)
-    .then(res => {
-      setResult(res.data);
-    }).catch(err => {
-      console.error(err);
-    })
-    ```
+
+<br/>
+
+```javascript
+axios.get(`${API_URL}/api/store`)
+.then(res => {
+  setResult(res.data);
+}).catch(err => {
+  console.error(err);
+})
+```
     
  ### 2. 레이아웃 깨짐
 
   - 문제: 관리자 메인 페이지 화면 레이아웃이 예상과 다르게 깨지는 문제가 발생.
   - 해결책: CSS Grid 등을 사용하여 레이아웃을 안정적으로 유지하도록 스타일을 조정.
 
-<table>
-  <tr>
-    <td><img src="/readme-file/admin-grid.png/></td>
-  </tr>
-</table>
+<br/>
 
+![css](/readme-file/admin-grid.png)
 
+ ### 3. 먼저 내 위치를 선택하고 매장을 선택한 후 다시 내 위치를 선택하면 작동하지 않는 문제
+
+  - 문제: 초기에 내 위치를 선택하고 매장을 선택한 후에 다시 내 위치를 선택하면 지도 및 마커 동작이 정상적으로 이루어지지 않는 문제가 발생.
+  - 해결책: 내 위치나 매장을 선택할 때마다, 기존에 생성된 지도와 마커를 초기화하고 새로운 지도와 마커를 생성하며, 이전에 생성한 마커와 이벤트를 해제하고 새로운 마커와 이벤트를 추가. 다시 내 위치를 선택한 경우, 지도의 중심을 사용자의 위치로 재설정.
+
+```javascript
+function Maps({ stores, onMarkerClick, clickedStore, myLocation }) {
+  useEffect(() => {
+    const container = document.getElementById("map");
+    const options = {
+      center: new kakao.maps.LatLng(37.55415495198728, 126.97078657543889),
+      level: 3,
+    };
+    const map = new kakao.maps.Map(container, options);
+  
+    // 매장 정보를 이용하여 마커 생성 및 지도에 추가
+    stores.forEach((store) => {
+      const marker = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(store.latitude, store.longitude),
+        title: store.store_name,
+      });
+  
+      kakao.maps.event.addListener(marker, "click", function () {
+        onMarkerClick(store);
+      });
+  
+      marker.setMap(map);
+    });
+  
+    // clickedStore가 변경되면 해당 좌표로 지도 이동
+    if (clickedStore) {
+      const { latitude, longitude } = clickedStore;
+      const moveLatLng = new kakao.maps.LatLng(latitude, longitude);
+      map.panTo(moveLatLng);
+    } else if (myLocation) {
+      // 내 위치 중심으로 지도 이동
+      const { latitude, longitude } = myLocation;
+      const moveLatLng = new kakao.maps.LatLng(latitude, longitude);
+      map.panTo(moveLatLng);
+    }
+  }, [stores, onMarkerClick, clickedStore, myLocation]);
+```
 
 ## 6. END
 
@@ -312,7 +354,7 @@ npm start
 - 백엔드(맥딜리버리,매장찾기,장바구니,결제,마이페이지)
 - 관리자페이지 백엔드 전체
 - 관리자페이지(해피밀,프로모션,새로운소식,메인,로그인)
-- 프로젝트 문서화
+- 프로젝트 문서화(back-end, ERD, 트러블 슈팅)
 - AWS EC2 활용하여 프로젝트 배포
 - NginX 리버스 프록시, https 적용
 
@@ -321,7 +363,7 @@ npm start
 - 품질이야기(프론트,디자인,백엔드)
 - 사람들(프론트,디자인,백엔드)
 - 관리자페이지(재료,크루,노력,FAQ) 프론트,디자인
-- 프로젝트 문서화
+- 프로젝트 문서화()
 - 관리자 페이지 사용 설명서
 - 카카오맵 API 및 MyLocation 기능
 
@@ -347,7 +389,7 @@ npm start
 - 관리자페이지(옵션, Slider, Banner) 프론트, 디자인
 - Aside 기능 구현
 - 관리자 페이지 사용 설명서
-- 프로젝트 문서화
+- 프로젝트 문서화(서비스 설명)
 
 ### 박승균
 
